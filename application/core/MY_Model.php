@@ -1,5 +1,14 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+/**
+ * MY_Model the CRUD Base Model class
+ * Profide commonds method for SELECT, INSERT, UPDATE & DELETE
+ *
+ * @package     CodeIgniter
+ * @subpackage  cores
+ * @category    core
+ * @author      Masaru Edo <masaruedogawa@gmail.com>
+ */
 class MY_Model extends CI_Model {
 
 	/**
@@ -27,6 +36,12 @@ class MY_Model extends CI_Model {
 	 */
 	protected $_match_field = true;
 
+	/**
+	 * define keys for searching purpose
+	 * @var array
+	 */
+	protected $_search_keys = array();
+
 
 	/**
 	 * get all data 
@@ -44,13 +59,49 @@ class MY_Model extends CI_Model {
 	}
 
 	/**
+	 * search filter
+	 *
+	 * @param string $keywords keyword to be serach
+	 * @return void
+	 */
+	protected function _search($keywords = "none")
+	{
+		// make sure that keyword to be search not empty 
+		// and not 'none' value
+		if ($keywords && $keywords != "none") {
+			// if no search keys defined
+			// use all fields from table
+			if ( ! count($this->_search_keys)) {
+				$this->_search_keys = $this->db->list_fields($this->_table);
+			}
+
+			foreach ($this->_search_keys as $no => $key) {
+				if ($key == $this->_pkey) {
+					continue;
+				}
+
+				if ($no == 0) {
+					$this->db->like($key, $keywords);
+				}
+				else {
+					$this->db->or_like($key, $keywords);
+				}
+			}
+
+			// save the keywords into session
+			// the key of the session keywordd place with find_keywords key
+			$this->session->set_userdata("find_keywords", $keywords);
+		}
+	}
+
+	/**
 	 * count all record
 	 *
 	 * @return int
 	 */
 	public function record_count()
 	{
-		return $this->db->count_all($this->_table);
+		return $this->db->count_all_results($this->_table);
 	}
 
 	/**
@@ -69,8 +120,9 @@ class MY_Model extends CI_Model {
 			if (!$key) {
 				$key = $this->_pkey;
 			}
-			$this->db->where($key, $value);
+			$this->db->where($key, $value)->limit(1);
 		}		
+
 		return $this->_get()->row();			
 	}
 
