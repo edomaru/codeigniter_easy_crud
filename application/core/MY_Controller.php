@@ -33,7 +33,15 @@ class MY_Controller extends CI_Controller {
     protected $the_title = "";
 
     /**
-     * template container to store data 
+     * template container to cover data 
+     * by default, it would be used views/includes/container.php
+     * it can be redirect to independent container by createing view/<class name>/container.php
+     * @var string
+     */
+    protected $the_container = "includes/container";
+
+    /**
+     * view content
      * by default, it would be used current_class/method_name.php 
      * @var string
      */
@@ -50,7 +58,8 @@ class MY_Controller extends CI_Controller {
         parent::__construct();        
 
         // catat nama class
-        $this->class_name = get_class($this);
+        $this->class_name = strtolower(get_class($this));
+        $this->data->class_name = $this->class_name;
 
         // current model named with 'cmodel'
         if ($this->model) {
@@ -63,6 +72,13 @@ class MY_Controller extends CI_Controller {
         }
 
         // set default container
+        $class_container = FCPATH . APPPATH . $this->class_name . "/container.php";
+        if (file_exists($class_container)) {
+            $this->the_container = $class_container;            
+        }
+        $this->data->the_container = $this->the_container;
+
+        // set default content view
         $this->the_content = $this->class_name . "/" . $this->router->method;
         $this->data->the_content = $this->the_content;
     }    
@@ -103,6 +119,34 @@ class MY_Controller extends CI_Controller {
         $this->data->pagination = $this->pagination->create_links();
         $this->data->query = $this->cmodel->get_all($keywords, $this->limit, $offset);
         $this->load->view($this->layout, $this->data);
+    }
+
+    public function add()
+    {
+        $this->set_content()
+        $this->load->view($this->layout, $this->data);
+    }
+
+    public function edit($id = false)
+    {        
+        $this->data->row = $this->cmodel->get_one($id);
+        $this->load->view($this->layout, $this->data);    
+    }
+
+    public function delete($id = false)
+    {
+        $status = $this->cmodel->delete($id);
+        if ($status == -1) {
+            set_message("error", "You can't delete this data");
+        }
+        elseif ($status > 0) {
+            set_message("success", "Data has been deleted");
+        }
+        else {
+            set_message("error", "Failed deleting data");
+        }
+
+        redirect($this->class_name, "location");
     }
     
 }
