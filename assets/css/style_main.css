@@ -1,0 +1,95 @@
+/* Sticky footer styles
+            -------------------------------------------------- */
+
+html,
+body {
+    height: 100%;
+    /* The html and body elements cannot have any padding or margin. */
+}
+
+/* Wrapper for page content to push down footer */
+#wrap {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+
+    /* Negative indent footer by it's height */
+    margin: 0 auto -61px; /*60px*/
+}
+
+#wrap-content {
+    padding-top: 60px;
+}
+
+/* Set the fixed height of the footer here */
+#push,
+#footer {
+    height: 60px;
+}
+#footer {
+    background-color: #f5f5f5;
+    border-top: 1px solid #E3E3E3;
+}
+
+/* Lastly, apply responsive CSS fixes as necessary */
+@media (max-width: 767px) {
+    #footer {
+        margin-left: -20px;
+        margin-right: -20px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+
+
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+
+.container {
+    width: auto;
+    max-width: 680px;
+    text-align: center;
+}
+.container .credit {
+    margin: 20px 0;
+}
+
+/* additional css */
+.box {
+    border: 1px solid #d6d6d6;
+    box-shadow: 0 1px 3px rgba(100,100,100,0.1);
+    margin-bottom: 15px;
+    border-radius: 3px 3px 0 0;
+    overflow: visible;
+    position: relative;
+}
+
+.box-title {
+    padding: 10px 15px;
+    background-color: #f8f8f8;
+    background-image: -moz-linear-gradient(top, #fdfdfd, #f6f6f6);
+    background-image: -ms-linear-gradient(top, #fdfdfd, #f6f6f6);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fdfdfd), to(#f6f6f6));
+    background-image: -webkit-linear-gradient(top, #fdfdfd, #f6f6f6);
+    background-image: -o-linear-gradient(top, #fdfdfd, #f6f6f6);
+    background-image: linear-gradient(top, #fdfdfd, #f6f6f6);
+    border-bottom: 1px solid #d6d6d6;
+    color: #555555;
+    text-shadow: 0 1px 0 #ffffff;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.box-title span {
+    margin-left: 15px;
+}
+
+.box-content {
+    padding:10px;
+}
+
+.validation {
+    margin-top: 5px;
+}
