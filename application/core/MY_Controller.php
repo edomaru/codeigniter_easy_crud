@@ -33,11 +33,11 @@ class MY_Controller extends CI_Controller {
     protected $the_title = "";
 
     /**
-     * template container to cover data 
+     * template container to store data 
      * by default, it would be used current_class/method_name.php 
      * @var string
      */
-    protected $the_container = "";
+    protected $the_content = "";
 
     /**
      * limit the record
@@ -63,8 +63,8 @@ class MY_Controller extends CI_Controller {
         }
 
         // set default container
-        $this->the_container = $this->class_name . "/" . $this->router->method;
-        $this->data->the_container = $this->the_container;
+        $this->the_content = $this->class_name . "/" . $this->router->method;
+        $this->data->the_content = $this->the_content;
     }    
 
     /**
