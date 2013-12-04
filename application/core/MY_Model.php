@@ -24,7 +24,7 @@ class MY_Model extends CI_Model {
 	protected $_pkey = null;
 
 	/**
-	 * data retrieve from submit form
+	 * data retrieved from submit form
 	 * @var array
 	 */
 	private $_post = array();
@@ -35,6 +35,12 @@ class MY_Model extends CI_Model {
 	 * @var boolean
 	 */
 	protected $_match_field = true;
+
+	/**
+	 * specify filed(s) to be retrieved
+	 * @var string
+	 */
+	protected $_fields = null;
 
 	/**
 	 * define keys for searching purpose
@@ -100,7 +106,7 @@ class MY_Model extends CI_Model {
 	 * @return int
 	 */
 	public function record_count()
-	{
+	{		
 		return $this->db->count_all_results($this->_table);
 	}
 
@@ -113,6 +119,8 @@ class MY_Model extends CI_Model {
 	 */
 	public function get_one($value, $key = null)
 	{
+		$this->db->limit(1);
+
 		if (is_array($value)) {
 			$this->db->where($value);
 		}
@@ -120,7 +128,7 @@ class MY_Model extends CI_Model {
 			if (!$key) {
 				$key = $this->_pkey;
 			}
-			$this->db->where($key, $value)->limit(1);
+			$this->db->where($key, $value);
 		}		
 
 		return $this->_get()->row();			
@@ -239,8 +247,17 @@ class MY_Model extends CI_Model {
 	 * @param int $id value of primary key field
 	 * @return boolean
 	 */
-	protected _allow_deleted($id = false) {
+	protected function _allow_deleted($id = false) {
 		return true;
+	}
+
+
+	public function set_model($table, $pkey, $fields = null, $search_keys = array())
+	{
+		$this->_table = $table;
+		$this->_pkey = $pkey;
+		$this->_fields = (!$fields || $fields == '*') ? '*' : $fields;
+		$this->_search_keys = $search_keys;
 	}
 
 }
