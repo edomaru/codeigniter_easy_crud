@@ -132,16 +132,42 @@ class MY_Controller extends CI_Controller {
      * define what model would be used, what title shown for the class
      * and how much record shown per page      
      * 
-     * @param type $model
+     * @param type $models
      * @param type $the_title
      * @param type $limit
      */
-    protected function set_module($model, $the_title = "", $limit = 0, $form_rules = array()) {        
-        $this->set_title($the_title);        
+    protected function set_module($models = array(), $the_title = "", $limit = 0, $form_rules = array()) {        
+        // set title for the controller class
+        $this->set_title($the_title);    
+
+        // set limitation of showing data
         $this->limit = $limit > 0 ? $limit : $this->limit;
-        $this->model = $model;
-        $this->load->model($this->model, "cmodel");
+
+        // load model(s)
+        $this->_load_models($models);
+
+        // set form rules
         $this->set_form_rules($form_rules);        
+    }
+
+    /**
+     * load module for the class
+     * if more than one model loaded, the first model
+     * will be used as current class modul and aliases with 'cmodel'
+     * the other load as usual
+     * @param mix $models model to be loaded
+     * @return vaoid
+     */
+    protected function _load_models($models = array())
+    {
+        if (is_array($models) && count($models)) {
+            $this->model = array_shift($models);   
+            $this->load->model($models);
+        }
+        else {
+            $this->model = $models;
+        }
+        $this->load->model($this->model, "cmodel");        
     }
 
     public function index($keywords = "none", $offset = 0)
@@ -215,6 +241,30 @@ class MY_Controller extends CI_Controller {
     }
 
     /**
+     * set additional data to module     
+     * @param mix $keys
+     * @param array $values value
+     * @param string $scope scope for data
+     * @return void
+     */
+    public function set_data($keys = array(), $values = array(), $scope = null)
+    {
+        // if scope defined, set data would access in specific method
+        if ($scope && $this->router->method != $scope) {
+            return;
+        }
+
+        if (is_array($keys)) {
+            foreach ($keys as $key => $value) {
+                $this->data->{$key} = $value;
+            }            
+        }
+        else {
+            $this->data->{$keys} = $values;
+        }
+    }
+
+    /**
      * add new data
      * if no data posted, show the form,
      * if any, insert new data into table
@@ -236,6 +286,7 @@ class MY_Controller extends CI_Controller {
         }
 
         $this->set_content("form");
+        $this->set_values($this->cmodel->empty_row());
         $this->load->view($this->layout, $this->data);
     }
 
@@ -244,10 +295,45 @@ class MY_Controller extends CI_Controller {
      */
     public function edit($id = false)
     {
-        $this->data->row = $this->cmodel->get_one($id);
-        $this->load->view($this->layout, $this->data);    
+        if ($this->is_valid()) {
+            $status = $this->cmodel->post_data()->update($id);
+
+            if ($status) {
+                set_message("success", "Data has been update");
+            }
+            else {
+                set_message("error", "Failed to update data");
+            }
+
+            redirect($this->class_name);
+        }
+
+        $this->set_content("form");
+        $this->set_values($this->cmodel->get_one($id));
+        $this->load->view($this->layout, $this->data);
     }
 
+    /**
+     * set values for input form
+     * usually we use set_value(field, default_field)
+     * with this method, we just call: $field
+     * @param mix $values values would be pass into form
+     * @return void
+     */
+    protected function set_values($values = array())
+    {
+        if (count($values)) {
+            foreach ($values as $key => $value) {
+                $this->data->{$key} = set_value($key, $value);
+            }
+        }
+    }
+
+    /**
+     * delete record
+     * @param int $id primary key value field
+     * @return void
+     */
     public function delete($id = false)
     {
         $status = $this->cmodel->delete($id);

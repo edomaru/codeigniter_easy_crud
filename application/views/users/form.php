@@ -3,21 +3,21 @@
     <div class="control-group">
         <label class="control-label" for="name">Full Name</label>
         <div class="controls">
-            <input type="text" name="name" id="name" class='span7' />
+            <input type="text" name="name" id="name" class='span7' value='<?= $name ?>' />
             <?php echo form_error("name", "<br /><span class='validation label label-important'>", "</span>")?>
         </div>
     </div>
     <div class="control-group">
         <label class="control-label" for="email">Email</label>
         <div class="controls">
-            <input type="text" name="email" id="email" class='span7' />
+            <input type="text" name="email" id="email" class='span7' value='<?= $email ?>' />
             <?php echo form_error("email", "<br /><span class='validation label label-important'>", "</span>")?>
         </div>
     </div>
     <div class="control-group">
         <label class="control-label" for="username">Username</label>
         <div class="controls">
-            <input type="text" name="username" id="username" class='span7' />
+            <input type="text" name="username" id="username" class='span7' value='<?= $username ?>' />
             <?php echo form_error("username", "<br /><span class='validation label label-important'>", "</span>")?>
         </div>
     </div>
@@ -35,6 +35,12 @@
             <?php echo form_error("password_confirm", "<br /><span class='validation label label-important'>", "</span>")?>
         </div>
     </div>    
+    <div class="control-group">
+        <label class="control-label" for="password_confirm">Group</label>
+        <div class="controls">
+            <?php echo form_dropdown("group_id", $group_options, $group_id) ?>            
+        </div>
+    </div>  
 
     <div class="form-actions">
         <button type="submit" class="btn btn-primary">Simpan</button>

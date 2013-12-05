@@ -134,12 +134,26 @@ class MY_Model extends CI_Model {
 		return $this->_get()->row();			
 	}
 
+	/**
+	 * return fields with empty value
+	 * @return array
+	 */
+	public function empty_row()
+	{
+		$rows = array();
+		$fields = $this->db->list_fields($this->_table);
+		foreach ($fields as $field) {
+			$rows[$field] = "";
+		}
+		return $rows;
+	}
+
 	/** 
 	 * get all data from table
 	 *
 	 * @return object
 	 */
-	private function _get()
+	protected function _get()
 	{
 		return $this->db->get($this->_table);
 	}
@@ -237,7 +251,7 @@ class MY_Model extends CI_Model {
 			return -1;
 		}
 
-		$this->db->where($key, $id)->delete($this->_table);
+		$this->db->where($this->_pkey, $id)->delete($this->_table);
         return $this->db->affected_rows();
 	}
 
