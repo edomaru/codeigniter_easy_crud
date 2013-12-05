@@ -48,6 +48,18 @@ class MY_Controller extends CI_Controller {
     protected $the_content = "";
 
     /**
+     * widget to be used
+     * @var string
+     */
+    protected $the_widget = "";
+
+    /**
+     * form validation rules
+     * @var array
+     */
+    protected $form_rules = array();
+
+    /**
      * limit the record
      * @var type 
      */
@@ -72,22 +84,45 @@ class MY_Controller extends CI_Controller {
         }
 
         // set default container
-        $class_container = FCPATH . APPPATH . $this->class_name . "/container.php";
-        if (file_exists($class_container)) {
+        $class_container = $this->class_name . "/container.php";
+        if (file_exists(FCPATH . APPPATH . $class_container)) {
             $this->the_container = $class_container;            
         }
         $this->data->the_container = $this->the_container;
 
+        // default widget for index
+        // check if any widget.php defined in view/<class name>/widget.php
+        // if not defined, it would be use views/includes/widget.php        
+        if ($this->router->method == 'index' && $this->the_widget !== FALSE) {
+            $this->the_widget = $this->class_name . "/widget.php";
+            if (! file_exists(FCPATH . APPPATH . $this->the_widget)) {
+                $this->the_widget = "includes/widget";
+            }
+            $this->data->the_widget = $this->the_widget;   
+        }    
+
         // set default content view
-        $this->the_content = $this->class_name . "/" . $this->router->method;
-        $this->data->the_content = $this->the_content;
+        $this->set_content();      
     }    
+
+    protected function set_content($content = null)
+    {
+        $this->the_content = $this->class_name;
+        if (! $content) {
+            $this->the_content .= "/" . $this->router->method;
+        }
+        else {
+            $this->the_content .= "/" . $content;
+        }
+
+        $this->data->the_content = $this->the_content;  
+    }
 
     /**
      * set title for the class
      * @param string $title
      */
-    protected function set_title($title) {
+    protected function set_title($title="") {
         $this->the_title = $title;
         $this->data->the_title = $this->the_title;
     }
@@ -101,11 +136,12 @@ class MY_Controller extends CI_Controller {
      * @param type $the_title
      * @param type $limit
      */
-    protected function set_module($model, $the_title, $limit = 0) {        
+    protected function set_module($model, $the_title = "", $limit = 0, $form_rules = array()) {        
         $this->set_title($the_title);        
         $this->limit = $limit > 0 ? $limit : $this->limit;
         $this->model = $model;
         $this->load->model($this->model, "cmodel");
+        $this->set_form_rules($form_rules);        
     }
 
     public function index($keywords = "none", $offset = 0)
@@ -117,18 +153,97 @@ class MY_Controller extends CI_Controller {
         $this->load->library('pagination');
         $this->pagination->initialize($config);
         $this->data->pagination = $this->pagination->create_links();
-        $this->data->query = $this->cmodel->get_all($keywords, $this->limit, $offset);
+        $this->data->query = $this->cmodel->get_all($keywords, $this->limit, $offset);        
         $this->load->view($this->layout, $this->data);
     }
 
+    /**
+     * check data validations
+     *
+     * @return boolean
+     */
+    protected function is_valid()
+    {
+        if ( count($_POST) ) {
+        
+            if (! count($this->form_rules) || !isset($this->form_rules[$this->router->method])) {
+                return TRUE;    
+            }
+
+            $this->load->library("form_validation");
+            $this->form_validation->set_rules( $this->form_rules[$this->router->method] );
+
+            if ($this->form_validation->run()) {
+                return TRUE;
+            }
+
+        }
+
+        return FALSE;
+    }
+
+    /**
+     * set form rules
+     * @param array $rules the form rules
+     * @return void
+     */
+    protected function set_form_rules($rules = array())
+    {        
+        if (count($rules)) {
+            // loop rules each method
+            foreach ($rules as $key => $values) {   
+                $key_rules = array();
+                // form validation rule per field
+                foreach ($values as $field => $attr) {
+                    $key_rules[] = $this->_set_rules($field, $attr);
+                }
+                $this->form_rules[$key] = $key_rules;         
+            }            
+        }
+    }
+
+    /**
+     * set prefer form validation rule
+     * @param string $field field name
+     * @param array $values not good validation rules (label, rules)
+     * @return array prefer validation rules array('field', 'label', 'rules')
+     */
+    private function _set_rules($field, $values = array())
+    {        
+        list($label, $rules) = $values;
+        return array('field' => $field, 'label' => $label, 'rules' => $rules);
+    }
+
+    /**
+     * add new data
+     * if no data posted, show the form,
+     * if any, insert new data into table
+     * @return void
+     */
     public function add()
     {
-        $this->set_content()
+        if ($this->is_valid()) {
+            $status = $this->cmodel->post_data()->save();
+
+            if ($status) {
+                set_message("success", "Data has been saved");
+            }
+            else {
+                set_message("error", "Failed to save data");
+            }
+
+            redirect($this->class_name);
+        }
+
+        $this->set_content("form");
         $this->load->view($this->layout, $this->data);
     }
 
+    /**
+     * edit selected data
+     */
     public function edit($id = false)
-    {        
+    {
         $this->data->row = $this->cmodel->get_one($id);
         $this->load->view($this->layout, $this->data);    
     }

@@ -1,0 +1,25 @@
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
+if ( !function_exists('set_message')) {
+    function set_message($alert, $content)
+    {
+        $ci =& get_instance();
+
+        $message = array('alert' => $alert, "content" => $content);
+        $ci->session->set_flashdata("message", $message);
+    }
+}
+
+if ( !function_exists('get_message')) {
+    function get_message()
+    {        
+        $ci =& get_instance();
+        
+        $message =  $ci->session->flashdata('message');
+        if ( ! count($message) ) {
+            return false;
+        }        
+
+        return $message;
+    }
+}
