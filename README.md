@@ -15,9 +15,8 @@ Usage
 ---
 1. Basic sample
 - create model class. In this class you can just specify what table would be used and the primary key field
-```php
-<?php
 
+```php
 class Users_model extends MY_Model {
 
 	function __construct()
@@ -31,7 +30,6 @@ class Users_model extends MY_Model {
 
 - create controller class. In this class you simply specify what model would be used for controller
 ```php
-<?php
 class Users extends MY_Controller {
 
 	public function __construct()
@@ -80,22 +78,26 @@ class Users extends MY_Controller {
     </tbody>
 </table>
 ```
+
 - Go http://localhost/codeigniter_easy_crud/users. Click add button and it would be show error that form.php cannot be loaded. Create form.php as index.php created on. Create your own HTML Form with every element name must be same name with table field name.
 
 ```php
 <?php $form_attr = array("id" => "form_{$class_name}", "class" => "form-horizontal") ?>
-<?php echo form_open("", $form_attr); ?>    
+<?php echo form_open("", $form_attr); ?>   
+	<!-- sample form element -->  
     <div class="control-group">
         <label class="control-label" for="name">Full Name</label>
         <div class="controls">
             <input type="text" name="name" id="name" class='span7' value='<?= $name ?>' />
-            <?php echo form_error("name", "<br /><span class='validation label label-important'>", "</span>")?>
+            <?php echo form_error("name", "<br /><span class='label label-important'>", "</span>")?>
         </div>
     </div>
-    <!-- your form element here --> 
+    
+    <!-- your other form element here --> 
 
     <div class="form-actions">
         <button type="submit" class="btn btn-primary">Simpan</button>
         <button type="button" class="btn" onclick="history.go(-1);">Batal</button>
     </div>
 <?php echo form_close() ?>
+```
