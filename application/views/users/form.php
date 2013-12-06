@@ -38,7 +38,7 @@
     <div class="control-group">
         <label class="control-label" for="password_confirm">Group</label>
         <div class="controls">
-            <?php echo form_dropdown("group_id", $group_options, $group_id) ?>            
+            <?php echo form_dropdown("group_id", $group_options, $group_id, 'class="span3"') ?>            
         </div>
     </div>  
 

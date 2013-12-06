@@ -19,10 +19,7 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-		// $this->load->view('welcome_message');
-		$this->load->model("users_model", "cmodel");
-		echo $this->cmodel->record_count();
-		echo $this->db->last_query();		
+		$this->load->view('welcome_message');
 	}
 }
 

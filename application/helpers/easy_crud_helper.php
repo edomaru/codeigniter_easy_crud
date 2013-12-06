@@ -1,5 +1,14 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+/**
+ * Helpers for CRUD purpose
+ *
+ * @package     CodeIgniter
+ * @subpackage  helpers
+ * @category    helper
+ * @author      Masaru Edo <masaruedogawa@gmail.com>
+ */ 
+
 if ( !function_exists('set_message')) {
     function set_message($alert, $content)
     {
@@ -12,7 +21,7 @@ if ( !function_exists('set_message')) {
 
 if ( !function_exists('get_message')) {
     function get_message()
-    {        
+    {
         $ci =& get_instance();
         
         $message =  $ci->session->flashdata('message');

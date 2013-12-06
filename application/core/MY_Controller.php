@@ -1,5 +1,15 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+/**
+ * MY_Controller the CRUD Base Controller class
+ * Profide commonds method for basic SELECT, INSERT, UPDATE & DELETE
+ *
+ * @package     CodeIgniter
+ * @subpackage  cores
+ * @category    core
+ * @author      Masaru Edo <masaruedogawa@gmail.com>
+ */
+
 class MY_Controller extends CI_Controller {
 
     /**
