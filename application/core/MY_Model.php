@@ -60,6 +60,7 @@ class MY_Model extends CI_Model {
 	public function get_all($keywords = "none", $limit = 20, $offset = 0)
 	{
 		$this->_search($keywords);
+		$this->db->select($this->_fields);
 		$this->db->limit($limit, $offset);
 		return $this->_get();
 	}
@@ -270,7 +271,7 @@ class MY_Model extends CI_Model {
 	{
 		$this->_table = $table;
 		$this->_pkey = $pkey;
-		$this->_fields = (!$fields || $fields == '*') ? '*' : $fields;
+		$this->_fields = (!$fields || $fields == '*') ? ('*') : (is_array($fields) ? implode(",", $fields) : $fields);
 		$this->_search_keys = $search_keys;
 	}
 

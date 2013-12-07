@@ -13,8 +13,8 @@ Instalation
 
 Usage
 ---
-1. Basic sample
-- create model class. In this class you can just specify what table would be used and the primary key field
+
+1. create model class. In this class you can just specify what table would be used and the primary key field
 
 ```php
 class Users_model extends MY_Model {
@@ -28,7 +28,8 @@ class Users_model extends MY_Model {
 }
 ```
 
-- create controller class. In this class you simply specify what model would be used for controller
+2. create controller class. In this class you simply specify what model would be used for controller
+
 ```php
 class Users extends MY_Controller {
 
@@ -41,9 +42,10 @@ class Users extends MY_Controller {
 }
 ```
 
-- next, create directory in application/views based on controller class name. for example controller name 'users' so the direcoty name also named 'users'. 
+3. next, create directory in application/views based on controller class name. for example controller name users so the direcoty name also named users. 
 
-- Create file index.php on directory created in above explaination. In this file you can defined HTML table as example below. 
+4. Create file index.php on directory created in above explaination. In this file you can defined HTML table as example below. 
+
 ```php
 <table class='table table-bordered table-striped'>       
     <thead>
@@ -66,30 +68,30 @@ class Users extends MY_Controller {
         <?php foreach ($query->result() as $row) : ?>
         <tr>
             <td>
-                <?php echo anchor($class_name . "/edit/" . $row->id, $icon_edit, array('title' => 'Edit user', 'class' => 'btn')); ?>
-                <?php echo anchor($class_name . "/delete/" . $row->id, $icon_delete, array('title' => 'Delete user', 'class' => 'btn btn-danger', 'onclick' => 'Are you sure ?')); ?>                
+                <?= anchor($class_name . "/edit/" . $row->id, $icon_edit, array('title' => 'Edit user', 'class' => 'btn')); ?>
+                <?= anchor($class_name . "/delete/" . $row->id, $icon_delete, array('title' => 'Delete user', 'class' => 'btn btn-danger', 'onclick' => 'Are you sure ?')); ?>                
             </td>           
-            <td><?php echo $row->name ?></td>
-            <td><?php echo $row->username ?></td>
-            <td><?php echo $row->email ?></td>            
-            <td><?php echo $row->active ? $active_status : $inactive_status ?></td>
+            <td><?= $row->name ?></td>
+            <td><?= $row->username ?></td>
+            <td><?= $row->email ?></td>            
+            <td><?= $row->active ? $active_status : $inactive_status ?></td>
         </tr>                        
         <?php endforeach; ?>
     </tbody>
 </table>
 ```
 
-- Go http://localhost/codeigniter_easy_crud/users. Click add button and it would be show error that form.php cannot be loaded. Create form.php as index.php created on. Create your own HTML Form with every element name must be same name with table field name.
+5. Go http://localhost/codeigniter_easy_crud/users. Click add button and it would be show error that form.php cannot be loaded. Create form.php as index.php created on. Create your own HTML Form with every element name must be same name with table field name.
 
 ```php
 <?php $form_attr = array("id" => "form_{$class_name}", "class" => "form-horizontal") ?>
-<?php echo form_open("", $form_attr); ?>   
+<?= form_open("", $form_attr); ?>   
 	<!-- sample form element -->  
     <div class="control-group">
         <label class="control-label" for="name">Full Name</label>
         <div class="controls">
             <input type="text" name="name" id="name" class='span7' value='<?= $name ?>' />
-            <?php echo form_error("name", "<br /><span class='label label-important'>", "</span>")?>
+            <?= form_error("name", "<br /><span class='label label-important'>", "</span>")?>
         </div>
     </div>
     
@@ -99,5 +101,64 @@ class Users extends MY_Controller {
         <button type="submit" class="btn btn-primary">Simpan</button>
         <button type="button" class="btn" onclick="history.go(-1);">Batal</button>
     </div>
-<?php echo form_close() ?>
+<?= form_close() ?>
+```
+
+Extra
+---
+
+1. Custom what fields to fetch
+By default all filds would be fetch when get_all called. You can specify the fields would be fetched in third **set_model** parameter.
+
+```php
+class Users_model extends MY_Model {
+
+    function __construct()
+    {
+        parent::__construct();
+        parent::set_model("users", "id", array('id', 'username', 'email'));      
+    }
+
+}
+```
+
+2. Custom search criteria. 
+By default all field are used as search criteria. You can specify what field(s) to used as search criteria by passing in fourth **set_model** parameter. 
+
+```php
+class Users_model extends MY_Model {
+
+	function __construct()
+	{
+		parent::__construct();
+		parent::set_model("users", "id", null, array('username', 'name'));		
+	}
+
+}
+```
+
+3. Set form validation
+To activate form validation in your form, you must specify form validation rules in 4th parameter of **set_module** like this
+
+```php
+class Users extends MY_Controller {
+
+    public function __construct()
+    {
+        parent::__construct();
+        parent::set_module(
+            "users_model", "Users", 10,
+            array(
+                'add' => array(
+                    'username' => array('Username', 'trim|required|is_unique[users.username]'),
+                    'name' => array('Name', 'trim|required'),
+                    'email' => array('Email', 'trim|required|valid_email'),
+                    'password' => array('Password', 'trim|required'),
+                    'password_confirm' => array('Password', 'trim|required|matches[password]')
+                )
+            )
+        );        
+    }
+
+}
 ```
