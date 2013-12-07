@@ -107,7 +107,7 @@ class Users extends MY_Controller {
 Extra
 ---
 
-1. Custom what fields to fetch
+- **Custom what fields to fetch.**
 By default all filds would be fetch when get_all called. You can specify the fields would be fetched in third **set_model** parameter.
 
 ```php
@@ -122,7 +122,7 @@ class Users_model extends MY_Model {
 }
 ```
 
-2. Custom search criteria. 
+- **Custom search criteria.** 
 By default all field are used as search criteria. You can specify what field(s) to used as search criteria by passing in fourth **set_model** parameter. 
 
 ```php
@@ -137,7 +137,7 @@ class Users_model extends MY_Model {
 }
 ```
 
-3. Set form validation
+- **Set form validation.**
 To activate form validation in your form, you must specify form validation rules in 4th parameter of **set_module** like this
 
 ```php

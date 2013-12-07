@@ -30,3 +30,5 @@
         <?php endforeach; ?>
     </tbody>
 </table>
+
+<?= $pagination ?>

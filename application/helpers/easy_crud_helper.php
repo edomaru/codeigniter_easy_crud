@@ -32,3 +32,26 @@ if ( !function_exists('get_message')) {
         return $message;
     }
 }
+
+if ( !function_exists('encode_keywords')) {
+    function encode_keywords($keywords = 'none')
+    {
+        if ($keywords == 'none') {
+            return $keywords;
+        }
+        $str = base64_encode($keywords);
+        return str_replace("=", "--", $str);
+    }
+}
+
+if ( !function_exists('decode_keywords')) {
+    function decode_keywords($keywords = 'none')
+    {
+        if ($keywords == 'none') {
+            return $keywords;
+        }
+        $keywords = str_replace("--", "=", $keywords);
+        $str = base64_decode($keywords);
+        return $str; 
+    }
+}

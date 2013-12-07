@@ -80,7 +80,7 @@ $autoload['helper'] = array('url', 'form','easy_crud');
 |
 */
 
-$autoload['config'] = array();
+$autoload['config'] = array('easy_crud');
 
 
 /*

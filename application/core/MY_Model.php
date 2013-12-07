@@ -62,7 +62,7 @@ class MY_Model extends CI_Model {
 		$this->_search($keywords);
 		$this->db->select($this->_fields);
 		$this->db->limit($limit, $offset);
-		return $this->_get();
+		return $this->_get();		
 	}
 
 	/**
@@ -97,7 +97,8 @@ class MY_Model extends CI_Model {
 
 			// save the keywords into session
 			// the key of the session keywordd place with find_keywords key
-			$this->session->set_userdata("find_keywords", $keywords);
+			$kin = $this->config->item('default_search_keyword_input_name');
+			$this->session->set_userdata("find_{$kin}", $keywords);
 		}
 	}
 
@@ -106,9 +107,11 @@ class MY_Model extends CI_Model {
 	 *
 	 * @return int
 	 */
-	public function record_count()
+	public function record_count($keywords = "none")
 	{		
-		return $this->db->count_all_results($this->_table);
+		$this->_search($keywords);
+		$r = $this->db->count_all_results($this->_table);		
+		return $r;
 	}
 
 	/**

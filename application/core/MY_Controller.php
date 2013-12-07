@@ -111,8 +111,14 @@ class MY_Controller extends CI_Controller {
             $this->data->the_widget = $this->the_widget;   
         }    
 
+        // clear search values when not in used
+        if ( !$this->uri->segment(3)) {
+            $keywords_handler = $this->config->item("default_search_keyword_input_name");
+            $this->session->unset_userdata("find_{$keywords_handler}");
+        }
+
         // set default content view
-        $this->set_content();      
+        $this->set_content();   
     }    
 
     protected function set_content($content = null)
@@ -182,15 +188,30 @@ class MY_Controller extends CI_Controller {
 
     public function index($keywords = "none", $offset = 0)
     {
-        $config['total_rows'] = $this->cmodel->record_count();
+        $keywords = $this->search_handler($keywords);        
+        $config = $this->config->item("pagination_bootstrap");
+        $config['total_rows'] = $this->cmodel->record_count(decode_keywords($keywords));
         $config['per_page'] = $this->limit;
-        $config['base_url'] = site_url($this->class_name . "/index");
+        $config['uri_segment'] = 4;
+        $config['base_url'] = site_url($this->class_name . "/index/" . $keywords);
 
         $this->load->library('pagination');
         $this->pagination->initialize($config);
         $this->data->pagination = $this->pagination->create_links();
-        $this->data->query = $this->cmodel->get_all($keywords, $this->limit, $offset);        
+        $this->data->query = $this->cmodel->get_all(decode_keywords($keywords), $this->limit, $offset);        
         $this->load->view($this->layout, $this->data);
+    }
+
+    protected function search_handler($keywords = "none")
+    {        
+        if (count($_POST)) {
+            $input_name = $this->config->item("default_search_keyword_input_name");
+            $keywords = $this->input->post($input_name);
+
+            $keywords = encode_keywords($keywords);
+        }
+
+        return $keywords;
     }
 
     /**
