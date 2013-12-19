@@ -48,6 +48,11 @@ class MY_Model extends CI_Model {
 	 */
 	protected $_search_keys = array();
 
+	/**
+     * form validation rules
+     * @var array
+     */
+    protected $form_rules = array();
 
 	/**
 	 * get all data 
@@ -185,7 +190,7 @@ class MY_Model extends CI_Model {
 	 * @param array $post data would be save
 	 */
 	public function save($post = array())
-	{		
+	{
 		if (count($post)) {
 			$this->_post = $post;
 		}
@@ -269,7 +274,15 @@ class MY_Model extends CI_Model {
 		return true;
 	}
 
-
+	/**
+	 * define esencial attributes for model (table name, primary key, fields, search key)
+	 *
+	 * @param string $table table name
+	 * @param string $pkey  primary key field
+	 * @param string $field field to be retrieve
+	 * @param string $search_key field(s) will be used for searching data
+	 * @return void
+	 */
 	public function set_model($table, $pkey, $fields = null, $search_keys = array())
 	{
 		$this->_table = $table;
@@ -278,4 +291,60 @@ class MY_Model extends CI_Model {
 		$this->_search_keys = $search_keys;
 	}
 
+	/**
+     * check data validations
+     *
+     * @return boolean
+     */
+    protected function is_valid()
+    {
+        if ( count($_POST) ) {
+        
+            if (! count($this->form_rules) || !isset($this->form_rules[$this->router->method])) {
+                return TRUE;    
+            }
+
+            $this->load->library("form_validation");
+            $this->form_validation->set_rules( $this->form_rules[$this->router->method] );
+
+            if ($this->form_validation->run()) {
+                return TRUE;
+            }
+
+        }
+
+        return FALSE;
+    }
+
+    /**
+     * set form rules
+     * @param array $rules the form rules
+     * @return void
+     */
+    protected function set_form_rules($rules = array())
+    {        
+        if (count($rules)) {
+            // loop rules each method
+            foreach ($rules as $key => $values) {   
+                $key_rules = array();
+                // form validation rule per field
+                foreach ($values as $field => $attr) {
+                    $key_rules[] = $this->_set_rules($field, $attr);
+                }
+                $this->form_rules[$key] = $key_rules;         
+            }            
+        }
+    }
+
+    /**
+     * set prefer form validation rule
+     * @param string $field field name
+     * @param array $values not good validation rules (label, rules)
+     * @return array prefer validation rules array('field', 'label', 'rules')
+     */
+    private function _set_rules($field, $values = array())
+    {        
+        list($label, $rules) = $values;
+        return array('field' => $field, 'label' => $label, 'rules' => $rules);
+    }
 }
