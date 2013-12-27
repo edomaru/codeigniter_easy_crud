@@ -1,0 +1,716 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"rule",
+				"rules"
+			],
+			[
+				"def",
+				"defaults"
+			],
+			[
+				"erro",
+				"error_message"
+			],
+			[
+				"err",
+				"error_name"
+			],
+			[
+				"i",
+				"inc	#include \"…\""
+			],
+			[
+				"aria",
+				"aria_req"
+			],
+			[
+				"comme",
+				"commenter"
+			],
+			[
+				"adaptive",
+				"adaptive_custom_comment_form"
+			],
+			[
+				"adap",
+				"adaptive-framework"
+			],
+			[
+				"setti",
+				"settings"
+			],
+			[
+				"reme",
+				"rememeber_me"
+			],
+			[
+				"set_error",
+				"set_error_message"
+			],
+			[
+				"sett",
+				"settings"
+			],
+			[
+				"website",
+				"website_title"
+			],
+			[
+				"user",
+				"user_id"
+			],
+			[
+				"error",
+				"errors"
+			],
+			[
+				"veri",
+				"verify_email"
+			],
+			[
+				"custom",
+				"custom_data"
+			],
+			[
+				"cus",
+				"custom_data"
+			],
+			[
+				"group",
+				"group_id"
+			],
+			[
+				"meta",
+				"metadata"
+			],
+			[
+				"file",
+				"filename"
+			],
+			[
+				"fun_",
+				"func_get_args"
+			],
+			[
+				"_se",
+				"_search"
+			],
+			[
+				"fun",
+				"fun	function …"
+			],
+			[
+				"defa",
+				"default_keywords"
+			],
+			[
+				"tab",
+				"table2"
+			],
+			[
+				"ta",
+				"table1"
+			],
+			[
+				"_ta",
+				"_table3"
+			],
+			[
+				"nilai",
+				"nilai_realisasi"
+			],
+			[
+				"penyerahan",
+				"penyerahan-dana"
+			],
+			[
+				"value",
+				"values"
+			],
+			[
+				"lab",
+				"label_no"
+			],
+			[
+				"tangga",
+				"tanggal_persetujuan"
+			],
+			[
+				"menu",
+				"menus"
+			],
+			[
+				"stat",
+				"status_ditolak"
+			],
+			[
+				"active",
+				"active_status"
+			],
+			[
+				"the_cont",
+				"the_container"
+			],
+			[
+				"name",
+				"name	Attr"
+			],
+			[
+				"pemo",
+				"pemohon_index"
+			],
+			[
+				"sear",
+				"search_keys"
+			],
+			[
+				"_sear",
+				"_search_keys"
+			],
+			[
+				"_ma",
+				"_match_field"
+			],
+			[
+				"_mat",
+				"_match_the_field"
+			],
+			[
+				"key",
+				"keywords"
+			],
+			[
+				"_th",
+				"_theme"
+			],
+			[
+				"_theme",
+				"_theme_path"
+			],
+			[
+				"_the",
+				"_theme_path"
+			],
+			[
+				"inc",
+				"incl1	include_once …"
+			],
+			[
+				"class",
+				"class_exists"
+			],
+			[
+				"spl_au",
+				"spl_autoload_register"
+			],
+			[
+				"su",
+				"submit_attr"
+			],
+			[
+				"pass",
+				"password_attr"
+			],
+			[
+				"func",
+				"function_exists"
+			],
+			[
+				"create",
+				"create_barcode"
+			],
+			[
+				"is_a",
+				"is_array"
+			],
+			[
+				"define",
+				"defined"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 380.0,
+		"selected_items":
+		[
+			[
+				"syntax:h",
+				"Set Syntax: HTML"
+			],
+			[
+				"package: ins",
+				"Package Control: Install Package"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"copy tag",
+				"File: Copy as Tag a"
+			],
+			[
+				"sideba",
+				"View: Toggle Side Bar"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"syntax:php",
+				"Set Syntax: PHP"
+			],
+			[
+				"gi",
+				"Gist: Open Gist"
+			],
+			[
+				"syntax:c+",
+				"Set Syntax: C++"
+			],
+			[
+				"gist",
+				"Gist: Create Public Gist"
+			],
+			[
+				"syntax:java",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"project",
+				"Project: Save As"
+			],
+			[
+				"package insta",
+				"Package Control: Install Package"
+			],
+			[
+				"fetch",
+				"Fetch: Package"
+			],
+			[
+				"sideb",
+				"View: Toggle Side Bar"
+			],
+			[
+				"sidebar",
+				"View: Toggle Side Bar"
+			],
+			[
+				"fetch:",
+				"Fetch: File"
+			],
+			[
+				"Package Control:in",
+				"Package Control: Install Package"
+			],
+			[
+				"Syntax:ht",
+				"Set Syntax: HTML"
+			],
+			[
+				"Package control: in",
+				"Package Control: Install Package"
+			],
+			[
+				"Syntax:cs",
+				"Set Syntax: CSS"
+			],
+			[
+				"Snippet:cL",
+				"Snippet: Config Load"
+			],
+			[
+				"syntax:ph",
+				"Set Syntax: PHP"
+			],
+			[
+				"snippet",
+				"Snippet: Lorem ipsum"
+			],
+			[
+				"Snippet: ",
+				"Snippet: URL Redirect"
+			],
+			[
+				"Install pa",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: inst",
+				"Package Control: Install Package"
+			],
+			[
+				"mini",
+				"View: Toggle Minimap"
+			],
+			[
+				"package control:install",
+				"Package Control: Install Package"
+			],
+			[
+				"package",
+				"Preferences: Browse Packages"
+			]
+		],
+		"width": 400.0
+	},
+	"console":
+	{
+		"height": 439.0,
+		"history":
+		[
+			"for i in [1..7]",
+			"for i in [1, 2, 3, 4]",
+			"for i in in [1, 2, 3, 4]",
+			"for in in [1, 2, 3, 4]",
+			"print(\"hi there\")",
+			"d:"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/E/Edomaru/Project/codeigniter_easy_crud/application/controllers/users.php",
+		"/E/Edomaru/Project/codeigniter_easy_crud/application/models/users_model.php",
+		"/E/Edomaru/Project/codeigniter_easy_crud/application/core/MY_Controller.php",
+		"/E/Edomaru/Project/codeigniter_easy_crud/application/core/MY_Model.php",
+		"/C/Users/Edomaru/AppData/Local/Temp/fz3temp-1/alat.php",
+		"/E/Edomaru/Project/codeigniter_easy_crud/application/core/MY_Form_validation.php",
+		"/E/Edomaru/Project/codeigniter_easy_crud/ci-easy-crud.sublime-project",
+		"/E/Edomaru/Project/codeigniter_easy_crud/application/config/constants.php",
+		"/E/Edomaru/Project/codeigniter_easy_crud/application/config/config.php",
+		"/E/Edomaru/Project/codeigniter_easy_crud/application/models/groups_model.php",
+		"/E/Edomaru/Learn/wordpress/wptut3/wp-content/themes/adaptive/functions.php",
+		"/F/SCREENCASE/NET TUTSPLUS/COURSE/Wordpress Theme Development/2. Beginning Theme Development/adaptive-html/adaptive html/post.html",
+		"/E/Edomaru/Learn/wordpress/wptut3/wp-content/themes/adaptive/functions/widget-ad-260.php",
+		"/E/Edomaru/Learn/wordpress/wptut3/wp-content/themes/adaptive/adaptive_note.txt",
+		"/E/Edomaru/Learn/wordpress/wptut3/wp-content/themes/adaptive/comments.php",
+		"/E/Edomaru/Learn/wordpress/wptut3/wp-content/themes/adaptive/page-archives.php",
+		"/E/Edomaru/Learn/wordpress/wptut3/wp-content/themes/adaptive/single.php",
+		"/E/Edomaru/Learn/wordpress/wptut3/wp-content/themes/adaptive/404.php",
+		"/E/Edomaru/Learn/wordpress/wptut3/wp-content/themes/adaptive/page-full-width.php",
+		"/E/Edomaru/Learn/wordpress/wptut3/wp-content/themes/adaptive/tag.php",
+		"/E/Edomaru/Learn/wordpress/wptut3/wp-content/themes/adaptive/category.php",
+		"/E/Edomaru/Learn/wordpress/wptut3/wp-content/themes/adaptive/css/master.css",
+		"/E/Edomaru/Learn/wordpress/wptut3/wp-content/themes/adaptive/search.php",
+		"/E/Edomaru/Learn/wordpress/wptut3/wp-content/themes/adaptive/page-contact.php",
+		"/E/Edomaru/Learn/wordpress/wptut3/wp-content/themes/adaptive/page.php",
+		"/E/Edomaru/Learn/wordpress/wptut3/wp-content/themes/adaptive/index.php",
+		"/E/Edomaru/Learn/wordpress/wptut3/wp-includes/css/admin-bar-rtl.css",
+		"/E/Edomaru/Learn/wordpress/wptut3/adaptive-theme.sublime-project",
+		"/E/Edomaru/Learn/wordpress/wptut3/wp-includes/js/tinymce/mark_loaded_src.js",
+		"/E/Edomaru/Learn/wordpress/wptut3/wp-admin/ms-admin.php",
+		"/E/Edomaru/Learn/wordpress/wptut3/wp-mail.php",
+		"/E/Edomaru/Learn/wordpress/wptut3/wp-admin/css/ie.css",
+		"/E/Edomaru/Learn/wordpress/wptut3/index.php",
+		"/C/Users/Edomaru/AppData/Roaming/Sublime Text 3/Packages/User/Default (Windows).sublime-keymap",
+		"/C/Users/Edomaru/AppData/Roaming/Sublime Text 3/Packages/Emmet/Default (Windows).sublime-keymap",
+		"/E/Edomaru/Learn/wordpress/wptut3/wp-content/adaptive/page.php",
+		"/E/Masaru Edo/My Project/web/sipd_diy/application/controllers/util_new.php",
+		"/C/Users/Edomaru/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/C/Users/Edomaru/AppData/Roaming/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
+		"/E/Edomaru/Project/codeigniter_easy_crud/application/config/migration.php",
+		"/E/Edomaru/Project/codeigniter_easy_crud/database_test.sql",
+		"/C/Users/Edomaru/AppData/Roaming/Sublime Text 3/Packages/PlainTasks/messages/Tutorial.todo",
+		"/C/Users/Edomaru/AppData/Roaming/Sublime Text 3/Packages/Gist/Gist.sublime-settings",
+		"/C/Users/Edomaru/AppData/Roaming/Sublime Text 3/Packages/User/Gist.sublime-settings",
+		"/C/Users/Edomaru/Desktop/learn_sublime/wp-content/theme/adaptive/index.php",
+		"/C/Users/Edomaru/AppData/Roaming/Sublime Text 3/Packages/SideBarEnhancements/CHANGELOG",
+		"/C/Users/Edomaru/Desktop/learn_sublime/test.php",
+		"/C/Users/Edomaru/AppData/Roaming/Sublime Text 3/Packages/User/Fetch.sublime-settings",
+		"/E/Masaru Edo/My Project/web/sipd-v1.5/application/views/themes/modern/user/hubungi_kami_form.php",
+		"/E/Masaru Edo/My Project/web/sipd-v1.3/application/views/themes/modern/user/hubungi_kami_form.php",
+		"/C/Program Files/Sublime Text 3/changelog.txt",
+		"/C/Users/Edomaru/AppData/Roaming/Sublime Text 3/Packages/Package Control/Package Control.sublime-settings",
+		"/C/Users/Edomaru/AppData/Roaming/Sublime Text 3/Packages/Default/Default (Windows).sublime-keymap",
+		"/E/Edomaru/Project/siinda/application/core/MY_Controller.php",
+		"/C/Users/Edomaru/AppData/Local/Temp/fz3temp-1/users.php",
+		"/C/Users/Edomaru/AppData/Local/Temp/fz3temp-1/forum_model.php",
+		"/C/Users/Edomaru/AppData/Local/Temp/fz3temp-1/database 2.php",
+		"/C/Users/Edomaru/AppData/Local/Temp/fz3temp-1/database.php",
+		"/E/Masaru Edo/My Project/web/pemkot/application/views/_themes/landingpage/layouts/main_layout.php",
+		"/C/Users/Edomaru/AppData/Local/Temp/fz3temp-1/admin.php",
+		"/C/Users/Edomaru/AppData/Local/Temp/fz3temp-2/database.php",
+		"/E/Masaru Edo/My Project/web/pemkot/assets/themes/landingpage/js/timer.js",
+		"/E/Masaru Edo/My Project/web/pemkot/assets/themes/landingpage/js/style.js",
+		"/E/Edomaru/Learn/corephp/learn_auth/application/models/auth_model.php",
+		"/E/Masaru Edo/MY Tools/CODEIGNITER/CI_AuthLTE-master/CI_AuthLTE-master/application/models/auth_model.php",
+		"/E/Edomaru/Learn/corephp/learn_auth/application/config/config.php",
+		"/E/Edomaru/Learn/wordpress/wptut3/wp-content/themes/adaptive/content-quote.php",
+		"/E/Edomaru/Project/jmc_sia/application/helpers/app_helper.php",
+		"/E/Masaru Edo/MY Tools/CODEIGNITER/CI_AuthLTE-master/CI_AuthLTE-master/CI_AuthLTE_db.sql",
+		"/C/Users/Edomaru/AppData/Local/Temp/fz3temp-1/news.php",
+		"/C/Users/Edomaru/AppData/Local/Temp/fz3temp-1/routes.php",
+		"/C/Users/Edomaru/AppData/Local/Temp/fz3temp-1/instansi_model.php",
+		"/C/Users/Edomaru/AppData/Local/Temp/fz3temp-1/instansi.php",
+		"/C/Users/Edomaru/AppData/Local/Temp/fz3temp-1/Public_Controller.php",
+		"/C/Users/Edomaru/AppData/Local/Temp/fz3temp-1/category_instansi_model.php",
+		"/C/Users/Edomaru/AppData/Local/Temp/fz3temp-1/profile.php",
+		"/C/Users/Edomaru/AppData/Local/Temp/fz3temp-1/agency_organization.php",
+		"/E/Masaru Edo/MY Tools/CODEIGNITER/CI_AuthLTE-master/CI_AuthLTE-master/application/views/emails/password_reset.php",
+		"/E/Masaru Edo/MY Tools/CODEIGNITER/CI_AuthLTE-master/CI_AuthLTE-master/application/views/emails/email_verification.php",
+		"/E/Edomaru/Learn/wordpress/wptut3/wp-content/themes/adaptive/sidebar.php",
+		"/F/SCREENCASE/NET TUTSPLUS/COURSE/Wordpress Theme Development/2. Beginning Theme Development/adaptive-html/adaptive html/index.html",
+		"/E/Edomaru/Learn/wordpress/wptut3/wp-content/themes/adaptive/searchform.php",
+		"/E/Edomaru/Learn/wordpress/wptut3/wp-content/themes/adaptive/content.php",
+		"/E/Edomaru/Learn/corephp/cicommerce/application/core/MY_Model.php",
+		"/E/Masaru Edo/My Project/web/pemkot/application/config/routes.php",
+		"/C/Users/Edomaru/AppData/Local/Temp/fz3temp-1/_index.php",
+		"/E/Edomaru/Project/jmc_stop.old1/application/models/collections_model.php",
+		"/E/Masaru Edo/My Project/web/sdd_diy/application/views/themes/modern/user/hubungi_kami_form.php",
+		"/C/Users/Edomaru/AppData/Local/Temp/fz3temp-1/main_layout.php",
+		"/C/Users/Edomaru/AppData/Local/Temp/fz3temp-1/contact.php",
+		"/E/Edomaru/Project/prototype_bappeda/pages/kontak.php",
+		"/E/Edomaru/Project/jmc_stop.old2/application/models/collections_model.php",
+		"/E/Edomaru/Project/prototype_bappeda.old/landingpage/products.php",
+		"/E/Edomaru/Project/prototype_bappeda.old/landingpage/index.php",
+		"/C/Users/Edomaru/AppData/Local/Temp/fz3temp-1/index.php",
+		"/E/Masaru Edo/My Project/web/pemkot/application/config/database.php",
+		"/E/Edomaru/Learn/corephp/cicommerce/application/models/kategori_model.php",
+		"/E/Edomaru/Learn/corephp/cicommerce/application/models/user_model.php",
+		"/E/Edomaru/Learn/corephp/cicommerce/application/libraries/Template.php",
+		"/E/Edomaru/Project/siinda/application/controllers/laporan_pengajuan_perbulan.php",
+		"/E/Edomaru/Project/siinda/application/models/persetujuan_model.php",
+		"/E/Edomaru/Project/siinda/application/helpers/app_helper.php",
+		"/E/Edomaru/Project/siinda/application/config/app.php",
+		"/E/Edomaru/Project/siinda/application/views/laporan_pengajuan_perbulan/index.php",
+		"/E/Edomaru/Project/siinda/application/models/user_model.php",
+		"/E/Edomaru/Project/siinda/application/models/penyerahan_model.php",
+		"/E/Edomaru/Project/siinda/application/models/pengajuan_model.php",
+		"/E/Edomaru/Project/siinda/application/views/persetujuan/pengajuan_perbulan.php",
+		"/E/Edomaru/Project/codeigniter_easy_crud/application/controllers/welcome.php",
+		"/E/Edomaru/Project/codeigniter_easy_crud/application/config/easy_crud.php",
+		"/E/Edomaru/Project/codeigniter_easy_crud/application/views/includes/search_form.php",
+		"/E/Edomaru/Project/codeigniter_easy_crud/application/helpers/easy_crud_helper.php",
+		"/C/Users/Edomaru/AppData/Local/Temp/Rar$DI10.1384/flexi_auth_lite_model.php",
+		"/C/Users/Edomaru/AppData/Local/Temp/Rar$DI22.817/test.php",
+		"/C/Users/Edomaru/AppData/Local/Temp/Rar$DI20.721/Flexi_auth.php",
+		"/C/Users/Edomaru/AppData/Local/Temp/Rar$DI16.883/Flexi_auth_lite.php",
+		"/C/Users/Edomaru/AppData/Local/Temp/Rar$DI13.358/MY_Form_validation.php",
+		"/C/Users/Edomaru/AppData/Local/Temp/Rar$DI10.818/recaptcha_helper.php",
+		"/C/Users/Edomaru/AppData/Local/Temp/Rar$DI00.988/flexi_auth.php",
+		"/E/Edomaru/Project/codeigniter_easy_crud/application/config/autoload.php",
+		"/E/Masaru Edo/MY Tools/CODEIGNITER/CI_AuthLTE-master/CI_AuthLTE-master/README.md",
+		"/E/Masaru Edo/MY Tools/CODEIGNITER/Authentication/A3M-master/a3m_database.sql",
+		"/E/Edomaru/Project/codeigniter_easy_crud/application/views/users/index.php",
+		"/E/Edomaru/Project/siinda/application/views/layout/main_sidebar.php",
+		"/E/Edomaru/Project/codeigniter_easy_crud/README.md",
+		"/C/Users/Edomaru/AppData/Local/Temp/fz3temp-1/referensi_item_data_model.php",
+		"/C/Users/Edomaru/AppData/Local/Temp/Rar$DI00.586/UserClass.php",
+		"/E/Edomaru/Project/siinda/application/controllers/pengajuan.php"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"id",
+			"esc_atr",
+			"Title",
+			"title",
+			"suka",
+			"comments",
+			"form",
+			"article",
+			"set_form_rules",
+			"email",
+			"Email",
+			"email",
+			"5",
+			"set_form_rules",
+			"Aku",
+			"aku ingin tau",
+			"tau",
+			"author",
+			"unset_remember_me_cookie",
+			"cookie_prefix",
+			"fetch_remember_me_cookie",
+			"_set_session",
+			"set_session",
+			"ip_ban(",
+			"_generate_email_verfication_token",
+			"send_verification_email",
+			"generate_email_verification_token",
+			"instansi",
+			"get_instansi",
+			"send_verification_email",
+			"set_error_message",
+			"email_exists",
+			"_rand_str",
+			"remember_me_cookie_name",
+			"remember_me_cookie_expiration",
+			"set_remember_me_cookie",
+			"_set_session",
+			"_reset_attempts",
+			"_increment_login_attempts",
+			"tampil_data(",
+			"php echo",
+			"serah-anggaran",
+			"->table",
+			"5",
+			"->table",
+			"key",
+			"ln_eks",
+			"update_katalog",
+			"update_statu",
+			"print_area",
+			"dashboar",
+			"function",
+			"?\n"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"validations",
+			"=",
+			"->_table"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 35.0
+	},
+	"input":
+	{
+		"height": 35.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"project": "ci-easy-crud.sublime-project",
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"myc",
+				"application\\core\\MY_Controller.php"
+			],
+			[
+				"master.",
+				"wp-content\\themes\\adaptive\\css\\master.css"
+			],
+			[
+				"mymo",
+				"application\\core\\MY_Model.php"
+			],
+			[
+				"my",
+				"application\\core\\MY_Controller.php"
+			],
+			[
+				"easycrudmycontr",
+				"codeigniter_easy_crud\\application\\core\\MY_Controller.php"
+			],
+			[
+				"mycont",
+				"siinda\\application\\core\\MY_Controller.php"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 255.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

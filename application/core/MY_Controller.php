@@ -61,13 +61,7 @@ class MY_Controller extends CI_Controller {
      * widget to be used
      * @var string
      */
-    protected $the_widget = "";
-
-    /**
-     * form validation rules
-     * @var array
-     */
-    protected $form_rules = array();
+    protected $the_widget = "";    
 
     /**
      * limit the record
@@ -87,6 +81,9 @@ class MY_Controller extends CI_Controller {
         if ($this->model) {
             $this->load->model($this->model, "cmodel");
         }
+
+        // load lang if any
+        // $this->lang->load($this->class_name, $this->config->item('language'));
         
         // if no title defined, use class name as title
         if (! $this->the_title) {
@@ -135,6 +132,17 @@ class MY_Controller extends CI_Controller {
     }
 
     /**
+     * Set content would be used as form and defined action
+     * @param string $form   
+     * @param string $action 
+     */
+    public function set_form($form = null, $action = null)
+    {
+        $this->set_content($form);
+        $this->data->action = $this->class_name . "/" . (!$action ? "save" : $action);        
+    }
+
+    /**
      * set title for the class
      * @param string $title
      */
@@ -152,7 +160,7 @@ class MY_Controller extends CI_Controller {
      * @param type $the_title
      * @param type $limit
      */
-    protected function set_module($models = array(), $the_title = "", $limit = 0, $form_rules = array()) {        
+    protected function set_module($models = array(), $the_title = "", $limit = 0) {        
         // set title for the controller class
         $this->set_title($the_title);    
 
@@ -160,10 +168,7 @@ class MY_Controller extends CI_Controller {
         $this->limit = $limit > 0 ? $limit : $this->limit;
 
         // load model(s)
-        $this->_load_models($models);
-
-        // set form rules
-        $this->set_form_rules($form_rules);        
+        $this->_load_models($models);   
     }
 
     /**
@@ -212,64 +217,7 @@ class MY_Controller extends CI_Controller {
         }
 
         return $keywords;
-    }
-
-    /**
-     * check data validations
-     *
-     * @return boolean
-     */
-    protected function is_valid()
-    {
-        if ( count($_POST) ) {
-        
-            if (! count($this->form_rules) || !isset($this->form_rules[$this->router->method])) {
-                return TRUE;    
-            }
-
-            $this->load->library("form_validation");
-            $this->form_validation->set_rules( $this->form_rules[$this->router->method] );
-
-            if ($this->form_validation->run()) {
-                return TRUE;
-            }
-
-        }
-
-        return FALSE;
-    }
-
-    /**
-     * set form rules
-     * @param array $rules the form rules
-     * @return void
-     */
-    protected function set_form_rules($rules = array())
-    {        
-        if (count($rules)) {
-            // loop rules each method
-            foreach ($rules as $key => $values) {   
-                $key_rules = array();
-                // form validation rule per field
-                foreach ($values as $field => $attr) {
-                    $key_rules[] = $this->_set_rules($field, $attr);
-                }
-                $this->form_rules[$key] = $key_rules;         
-            }            
-        }
-    }
-
-    /**
-     * set prefer form validation rule
-     * @param string $field field name
-     * @param array $values not good validation rules (label, rules)
-     * @return array prefer validation rules array('field', 'label', 'rules')
-     */
-    private function _set_rules($field, $values = array())
-    {        
-        list($label, $rules) = $values;
-        return array('field' => $field, 'label' => $label, 'rules' => $rules);
-    }
+    }    
 
     /**
      * set additional data to module     
@@ -303,22 +251,23 @@ class MY_Controller extends CI_Controller {
      */
     public function add()
     {
-        if ($this->is_valid()) {
-            $status = $this->cmodel->post_data()->save();
-
-            if ($status) {
-                set_message("success", "Data has been saved");
-            }
-            else {
-                set_message("error", "Failed to save data");
-            }
-
-            redirect($this->class_name);
-        }
-
-        $this->set_content("form");
+        $this->set_form("form");
         $this->set_values($this->cmodel->empty_row());
         $this->load->view($this->layout, $this->data);
+    }
+
+    public function save()
+    {
+        $status = $this->cmodel->save();
+
+        if ($status) {
+            set_message("success", "Data has been saved");
+            redirect($this->class_name);
+        }
+        else {
+            set_message("error", "Failed to save data");
+            $this->add();
+        }
     }
 
     /**
@@ -326,22 +275,27 @@ class MY_Controller extends CI_Controller {
      */
     public function edit($id = false)
     {
-        if ($this->is_valid()) {
-            $status = $this->cmodel->post_data()->update($id);
-
-            if ($status) {
-                set_message("success", "Data has been update");
-            }
-            else {
-                set_message("error", "Failed to update data");
-            }
-
-            redirect($this->class_name);
+        if (! $id) {
+            show_404();
         }
 
-        $this->set_content("form");
+        $this->set_form("form", "update/{$id}");
         $this->set_values($this->cmodel->get_one($id));
         $this->load->view($this->layout, $this->data);
+    }
+
+    public function update($id = false)
+    {
+        $status = $this->cmodel->update($id);
+
+        if ($status) {
+            set_message("success", "Data has been updated");
+            redirect($this->class_name);
+        }
+        else {
+            set_message("error", "Failed to update data");
+            $this->edit($id);
+        }
     }
 
     /**

@@ -55,6 +55,12 @@ class MY_Model extends CI_Model {
     protected $form_rules = array();
 
 	/**
+	 * Is data post passed is valid or not
+	 * @var boolean
+	 */
+	private $is_valid = FALSE;
+
+	/**
 	 * get all data 
 	 *
 	 * @param string 		$keywords the keywords to be search
@@ -174,7 +180,7 @@ class MY_Model extends CI_Model {
 	 * @param boolean $clean option to active/nonactive xss_clean input post
 	 * @return MY_Model
 	 */
-	public function post_data($clean = TRUE)
+	protected function post_data($clean = TRUE)
 	{
 		if ( count($_POST) ) {
 			foreach ($_POST as $key => $val) {
@@ -185,26 +191,42 @@ class MY_Model extends CI_Model {
 		return $this;
 	}
 
+	public function before_save() {}
+
+	public function after_save() {}	
+
+	public function before_update($param = null) {}
+
+	public function after_update($param = null) {}
+
+	public function before_delete($param = null) {}
+
+	public function after_delete($param = null) {}
+
 	/**
 	 * save data to table
 	 * @param array $post data would be save
 	 */
-	public function save($post = array())
+	public function save()
 	{
-		if (count($post)) {
-			$this->_post = $post;
-		}
+		if (! $this->is_valid()) {
+			return false;
+		}		
 
-		// if defined hd_{primary key name} in form and has value, them update
-		$id = ( isset($this->_post["hd_{$this->_pkey}"]) && $this->_post["hd_{$this->_pkey}"] ) ? $this->_post[$this->_pkey] : FALSE;
-		if ($id) {
-			return $this->update($id);
-		}
-
+		// get data post submited
+		$this->post_data();
+		
+		// proses sebelum melakukan menyimpan data
+		$this->before_save();		
 
 		$this->_prepare_data();
 		$this->db->insert($this->_table);
-		return $this->db->insert_id();
+		$status = $this->db->insert_id();		
+
+		// proses setelah  menyimpan data (jika diperlukan)
+		$this->after_save();
+		
+		return $status;
 	}
 
 	/**
@@ -237,16 +259,27 @@ class MY_Model extends CI_Model {
 	 * update data from table
 	 * @param array $post data would be save
 	 */
-	public function update($id, $post = array())
+	public function update($id)
 	{
-		if (count($post)) {
-			$this->_post = $post;
+		if (! $this->is_valid()) {
+			return false;
 		}
+
+		// get data post submited
+		$this->post_data();
+
+		// proses sebelum melakukan menyimpan data
+		$this->before_update($id);	
 
 		$this->_prepare_data();
 		$this->db->where($this->_pkey, $id);
 		$this->db->update($this->_table);
-		return $this->db->affected_rows();
+		$status = $this->db->affected_rows();
+
+		// proses setelah  menyimpan data (jika diperlukan)
+		$this->after_update($id);
+
+		return $status;
 	}
 
 	/**
@@ -256,23 +289,14 @@ class MY_Model extends CI_Model {
 	 */
 	public function delete($id = false)
 	{
-		if ( ! $this->_allow_deleted($id) ) {
-			return -1;
-		}
+		$this->before_delete($id);
 
 		$this->db->where($this->_pkey, $id)->delete($this->_table);
-        return $this->db->affected_rows();
-	}
+        $status = $this->db->affected_rows();
 
-	/** 
-	 * here you can defined
-	 * what case data wether can be deleted or not
-	 * @param int $id value of primary key field
-	 * @return boolean
-	 */
-	protected function _allow_deleted($id = false) {
-		return true;
-	}
+        $this->after_delete($id);
+        return $status;
+	}	
 
 	/**
 	 * define esencial attributes for model (table name, primary key, fields, search key)
@@ -291,52 +315,40 @@ class MY_Model extends CI_Model {
 		$this->_search_keys = $search_keys;
 	}
 
-	/**
-     * check data validations
-     *
-     * @return boolean
-     */
-    protected function is_valid()
-    {
-        if ( count($_POST) ) {
-        
-            if (! count($this->form_rules) || !isset($this->form_rules[$this->router->method])) {
+	public function is_valid()
+	{
+		if ( count($_POST) ) {
+
+			if (! count($this->form_rules) ) {
                 return TRUE;    
             }
 
             $this->load->library("form_validation");
-            $this->form_validation->set_rules( $this->form_rules[$this->router->method] );
+            $this->form_validation->set_rules( $this->form_rules );
 
             if ($this->form_validation->run()) {
                 return TRUE;
             }
 
-        }
+		}
 
-        return FALSE;
-    }
+		return FALSE;
+	}
 
-    /**
-     * set form rules
-     * @param array $rules the form rules
-     * @return void
-     */
-    protected function set_form_rules($rules = array())
-    {        
-        if (count($rules)) {
-            // loop rules each method
-            foreach ($rules as $key => $values) {   
-                $key_rules = array();
-                // form validation rule per field
-                foreach ($values as $field => $attr) {
-                    $key_rules[] = $this->_set_rules($field, $attr);
-                }
-                $this->form_rules[$key] = $key_rules;         
-            }            
-        }
-    }
+	public function validations($key = array(), $rules = array())
+	{
+		// jika array
+		if (is_array($key) && count($key) > 0) {
+			foreach ($key as $field => $values) {
+				$this->form_rules[] = $this->_set_rules($field, $values);
+			}
+		}
+		else {
+			$this->form_rules[] = $this->_set_rules($key, $rules);
+		}
+	}
 
-    /**
+	 /**
      * set prefer form validation rule
      * @param string $field field name
      * @param array $values not good validation rules (label, rules)
@@ -344,7 +356,15 @@ class MY_Model extends CI_Model {
      */
     private function _set_rules($field, $values = array())
     {        
-        list($label, $rules) = $values;
+    	if (is_array($values)) {
+    		list($label, $rules) = $values;	
+    	}
+        else {
+        	$rules = $values;
+        	$label = ucwords(str_replace("_", " ", $field));
+        	// $label = ( ($lang = lang($field)) ? $lang : ucwords(str_replace("_", " ", $field)) ) ;
+        }
         return array('field' => $field, 'label' => $label, 'rules' => $rules);
     }
+
 }

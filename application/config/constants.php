@@ -37,5 +37,16 @@ define('FOPEN_WRITE_CREATE_STRICT',				'xb');
 define('FOPEN_READ_WRITE_CREATE_STRICT',		'x+b');
 
 
+/*
+|--------------------------------------------------------------------------
+| Easy CRUD Status
+|--------------------------------------------------------------------------
+|
+| These modes are used when working with fopen()/popen()
+|
+*/
+define('NO_POSTS', -2);
+define('FAILED_SAVE', -1);
+
 /* End of file constants.php */
 /* Location: ./application/config/constants.php */
