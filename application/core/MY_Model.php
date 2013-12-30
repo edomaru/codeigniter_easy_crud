@@ -260,7 +260,7 @@ class MY_Model extends CI_Model {
 	 * @param array $post data would be save
 	 */
 	public function update($id)
-	{
+	{		
 		if (! $this->is_valid()) {
 			return false;
 		}
@@ -316,7 +316,7 @@ class MY_Model extends CI_Model {
 	}
 
 	public function is_valid()
-	{
+	{		
 		if ( count($_POST) ) {
 
 			if (! count($this->form_rules) ) {
@@ -364,6 +364,17 @@ class MY_Model extends CI_Model {
         	$label = ucwords(str_replace("_", " ", $field));
         	// $label = ( ($lang = lang($field)) ? $lang : ucwords(str_replace("_", " ", $field)) ) ;
         }
+
+        if ($this->router->method == 'update') {        	
+        	$arr_rules = explode('|', $rules);
+    		$new_rules = array();
+    		foreach ($arr_rules as $rule) {
+    			if (strpos($rule, 'is_unique') !== false) continue;
+    			$new_rules[] = $rule;
+    		}
+    		$rules = implode('|', $new_rules);
+        }
+
         return array('field' => $field, 'label' => $label, 'rules' => $rules);
     }
 

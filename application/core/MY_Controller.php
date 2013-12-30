@@ -52,7 +52,7 @@ class MY_Controller extends CI_Controller {
 
     /**
      * view content
-     * by default, it would be used current_class/method_name.php 
+     * by default, it would be used <current_class>/<method_name>.php 
      * @var string
      */
     protected $the_content = "";
@@ -109,7 +109,7 @@ class MY_Controller extends CI_Controller {
         }    
 
         // clear search values when not in used
-        if ( !$this->uri->segment(3)) {
+        if ( !$this->uri->segment(3) || $this->uri->segment(3) == 'none') {
             $keywords_handler = $this->config->item("default_search_keyword_input_name");
             $this->session->unset_userdata("find_{$keywords_handler}");
         }
@@ -118,6 +118,10 @@ class MY_Controller extends CI_Controller {
         $this->set_content();   
     }    
 
+    /**
+     * set content would be used.
+     * @param string $content if no content defined, it would be used <class_name>/<method_name> as default content
+     */
     protected function set_content($content = null)
     {
         $this->the_content = $this->class_name;

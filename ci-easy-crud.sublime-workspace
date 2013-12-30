@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"collection",
+				"collection_tmp"
+			],
+			[
+				"collec",
+				"collections_tmp"
+			],
+			[
 				"rule",
 				"rules"
 			],
@@ -235,6 +243,22 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "application/controllers/welcome.php",
+			"settings":
+			{
+				"buffer_size": 1012,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "application/core/MY_Form_validation.php",
+			"settings":
+			{
+				"buffer_size": 826,
+				"line_ending": "Windows"
+			}
+		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -389,12 +413,13 @@
 	},
 	"file_history":
 	[
-		"/E/Edomaru/Project/codeigniter_easy_crud/application/controllers/users.php",
 		"/E/Edomaru/Project/codeigniter_easy_crud/application/models/users_model.php",
+		"/E/Edomaru/Project/codeigniter_easy_crud/application/core/MY_Form_validation.php",
 		"/E/Edomaru/Project/codeigniter_easy_crud/application/core/MY_Controller.php",
+		"/E/Edomaru/Project/codeigniter_easy_crud/application/views/users/form.php",
 		"/E/Edomaru/Project/codeigniter_easy_crud/application/core/MY_Model.php",
 		"/C/Users/Edomaru/AppData/Local/Temp/fz3temp-1/alat.php",
-		"/E/Edomaru/Project/codeigniter_easy_crud/application/core/MY_Form_validation.php",
+		"/E/Edomaru/Project/codeigniter_easy_crud/application/controllers/users.php",
 		"/E/Edomaru/Project/codeigniter_easy_crud/ci-easy-crud.sublime-project",
 		"/E/Edomaru/Project/codeigniter_easy_crud/application/config/constants.php",
 		"/E/Edomaru/Project/codeigniter_easy_crud/application/config/config.php",
@@ -515,8 +540,7 @@
 		"/E/Edomaru/Project/siinda/application/views/layout/main_sidebar.php",
 		"/E/Edomaru/Project/codeigniter_easy_crud/README.md",
 		"/C/Users/Edomaru/AppData/Local/Temp/fz3temp-1/referensi_item_data_model.php",
-		"/C/Users/Edomaru/AppData/Local/Temp/Rar$DI00.586/UserClass.php",
-		"/E/Edomaru/Project/siinda/application/controllers/pengajuan.php"
+		"/C/Users/Edomaru/AppData/Local/Temp/Rar$DI00.586/UserClass.php"
 	],
 	"find":
 	{
@@ -607,8 +631,67 @@
 	"groups":
 	[
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "application/controllers/welcome.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1012,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								759,
+								759
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "application/core/MY_Form_validation.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 826,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								600,
+								600
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 57.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				}
 			]
 		}
 	],
