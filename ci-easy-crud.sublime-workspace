@@ -4,6 +4,18 @@
 		"selected_items":
 		[
 			[
+				"ru",
+				"rule"
+			],
+			[
+				"rou",
+				"router"
+			],
+			[
+				"strp",
+				"strpos"
+			],
+			[
 				"collection",
 				"collection_tmp"
 			],
@@ -243,22 +255,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "application/controllers/welcome.php",
-			"settings":
-			{
-				"buffer_size": 1012,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "application/core/MY_Form_validation.php",
-			"settings":
-			{
-				"buffer_size": 826,
-				"line_ending": "Windows"
-			}
-		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -413,17 +409,36 @@
 	},
 	"file_history":
 	[
-		"/E/Edomaru/Project/codeigniter_easy_crud/application/models/users_model.php",
-		"/E/Edomaru/Project/codeigniter_easy_crud/application/core/MY_Form_validation.php",
+		"/E/Edomaru/Project/codeigniter_easy_crud/application/models/groups_model.php",
 		"/E/Edomaru/Project/codeigniter_easy_crud/application/core/MY_Controller.php",
-		"/E/Edomaru/Project/codeigniter_easy_crud/application/views/users/form.php",
+		"/E/Edomaru/Project/codeigniter_easy_crud/application/views/includes/container.php",
+		"/E/Edomaru/Project/codeigniter_easy_crud/application/views/includes/search_form.php",
+		"/E/Edomaru/Project/codeigniter_easy_crud/application/views/includes/widget.php",
+		"/E/Masaru Edo/MY Tools/CODEIGNITER/Authentication/flexi-auth-master/demo_files/application/config/flexi_auth.php",
+		"/E/Masaru Edo/MY Tools/CODEIGNITER/Authentication/A3M-master/application/controllers/home.php",
+		"/E/Masaru Edo/MY Tools/CODEIGNITER/Authentication/A3M-master/application/controllers/account/connect_google.php",
+		"/E/Masaru Edo/MY Tools/CODEIGNITER/Authentication/A3M-master/application/models/account/account_model.php",
+		"/E/Masaru Edo/MY Tools/CODEIGNITER/CI_AuthLTE-master/CI_AuthLTE-master/CI_AuthLTE_db.sql",
+		"/E/Masaru Edo/MY Tools/CODEIGNITER/CI_AuthLTE-master/CI_AuthLTE-master/application/language/english/auth_lang.php",
+		"/E/Masaru Edo/MY Tools/CODEIGNITER/CI_AuthLTE-master/CI_AuthLTE-master/application/models/auth_model.php",
+		"/E/Masaru Edo/MY Tools/CODEIGNITER/Authentication/flexi-auth-master/demo_files/application/controllers/user_guide.php",
+		"/E/Edomaru/Project/codeigniter_easy_crud/application/controllers/welcome.php",
+		"/E/Edomaru/Project/codeigniter_easy_crud/application/models/users_model.php",
+		"/E/Masaru Edo/MY Tools/CODEIGNITER/grocery-crud-1.4.1/application/views/example.php",
 		"/E/Edomaru/Project/codeigniter_easy_crud/application/core/MY_Model.php",
+		"/E/Edomaru/Project/codeigniter_easy_crud/application/views/users/form.php",
+		"/E/Masaru Edo/MY Tools/CODEIGNITER/grocery-crud-1.4.1/application/controllers/examples.php",
+		"/E/Masaru Edo/MY Tools/CODEIGNITER/grocery-crud-1.4.1/application/config/grocery_crud.php",
+		"/E/Masaru Edo/MY Tools/CODEIGNITER/grocery-crud-1.4.1/application/libraries/Grocery_CRUD.php",
+		"/E/Masaru Edo/MY Tools/CODEIGNITER/grocery-crud-1.4.1/application/models/grocery_crud_model.php",
+		"/E/Masaru Edo/MY Tools/CODEIGNITER/grocery-crud-1.4.1/application/libraries/image_moo.php",
+		"/E/Edomaru/Project/codeigniter_easy_crud/application/views/users/index.php",
+		"/E/Edomaru/Project/codeigniter_easy_crud/application/core/MY_Form_validation.php",
 		"/C/Users/Edomaru/AppData/Local/Temp/fz3temp-1/alat.php",
 		"/E/Edomaru/Project/codeigniter_easy_crud/application/controllers/users.php",
 		"/E/Edomaru/Project/codeigniter_easy_crud/ci-easy-crud.sublime-project",
 		"/E/Edomaru/Project/codeigniter_easy_crud/application/config/constants.php",
 		"/E/Edomaru/Project/codeigniter_easy_crud/application/config/config.php",
-		"/E/Edomaru/Project/codeigniter_easy_crud/application/models/groups_model.php",
 		"/E/Edomaru/Learn/wordpress/wptut3/wp-content/themes/adaptive/functions.php",
 		"/F/SCREENCASE/NET TUTSPLUS/COURSE/Wordpress Theme Development/2. Beginning Theme Development/adaptive-html/adaptive html/post.html",
 		"/E/Edomaru/Learn/wordpress/wptut3/wp-content/themes/adaptive/functions/widget-ad-260.php",
@@ -478,11 +493,9 @@
 		"/E/Masaru Edo/My Project/web/pemkot/assets/themes/landingpage/js/timer.js",
 		"/E/Masaru Edo/My Project/web/pemkot/assets/themes/landingpage/js/style.js",
 		"/E/Edomaru/Learn/corephp/learn_auth/application/models/auth_model.php",
-		"/E/Masaru Edo/MY Tools/CODEIGNITER/CI_AuthLTE-master/CI_AuthLTE-master/application/models/auth_model.php",
 		"/E/Edomaru/Learn/corephp/learn_auth/application/config/config.php",
 		"/E/Edomaru/Learn/wordpress/wptut3/wp-content/themes/adaptive/content-quote.php",
 		"/E/Edomaru/Project/jmc_sia/application/helpers/app_helper.php",
-		"/E/Masaru Edo/MY Tools/CODEIGNITER/CI_AuthLTE-master/CI_AuthLTE-master/CI_AuthLTE_db.sql",
 		"/C/Users/Edomaru/AppData/Local/Temp/fz3temp-1/news.php",
 		"/C/Users/Edomaru/AppData/Local/Temp/fz3temp-1/routes.php",
 		"/C/Users/Edomaru/AppData/Local/Temp/fz3temp-1/instansi_model.php",
@@ -522,25 +535,8 @@
 		"/E/Edomaru/Project/siinda/application/models/penyerahan_model.php",
 		"/E/Edomaru/Project/siinda/application/models/pengajuan_model.php",
 		"/E/Edomaru/Project/siinda/application/views/persetujuan/pengajuan_perbulan.php",
-		"/E/Edomaru/Project/codeigniter_easy_crud/application/controllers/welcome.php",
 		"/E/Edomaru/Project/codeigniter_easy_crud/application/config/easy_crud.php",
-		"/E/Edomaru/Project/codeigniter_easy_crud/application/views/includes/search_form.php",
-		"/E/Edomaru/Project/codeigniter_easy_crud/application/helpers/easy_crud_helper.php",
-		"/C/Users/Edomaru/AppData/Local/Temp/Rar$DI10.1384/flexi_auth_lite_model.php",
-		"/C/Users/Edomaru/AppData/Local/Temp/Rar$DI22.817/test.php",
-		"/C/Users/Edomaru/AppData/Local/Temp/Rar$DI20.721/Flexi_auth.php",
-		"/C/Users/Edomaru/AppData/Local/Temp/Rar$DI16.883/Flexi_auth_lite.php",
-		"/C/Users/Edomaru/AppData/Local/Temp/Rar$DI13.358/MY_Form_validation.php",
-		"/C/Users/Edomaru/AppData/Local/Temp/Rar$DI10.818/recaptcha_helper.php",
-		"/C/Users/Edomaru/AppData/Local/Temp/Rar$DI00.988/flexi_auth.php",
-		"/E/Edomaru/Project/codeigniter_easy_crud/application/config/autoload.php",
-		"/E/Masaru Edo/MY Tools/CODEIGNITER/CI_AuthLTE-master/CI_AuthLTE-master/README.md",
-		"/E/Masaru Edo/MY Tools/CODEIGNITER/Authentication/A3M-master/a3m_database.sql",
-		"/E/Edomaru/Project/codeigniter_easy_crud/application/views/users/index.php",
-		"/E/Edomaru/Project/siinda/application/views/layout/main_sidebar.php",
-		"/E/Edomaru/Project/codeigniter_easy_crud/README.md",
-		"/C/Users/Edomaru/AppData/Local/Temp/fz3temp-1/referensi_item_data_model.php",
-		"/C/Users/Edomaru/AppData/Local/Temp/Rar$DI00.586/UserClass.php"
+		"/E/Edomaru/Project/codeigniter_easy_crud/application/helpers/easy_crud_helper.php"
 	],
 	"find":
 	{
@@ -558,6 +554,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"_set_rules",
+			"before_validation",
 			"id",
 			"esc_atr",
 			"Title",
@@ -618,6 +616,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"before_validate",
 			"validations",
 			"=",
 			"->_table"
@@ -631,67 +630,8 @@
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "application/controllers/welcome.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1012,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								759,
-								759
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "application/core/MY_Form_validation.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 826,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								600,
-								600
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 57.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				}
 			]
 		}
 	],

@@ -14,6 +14,6 @@ class Users_model extends MY_Model {
 			'password' => array('Password', 'trim|required|sha1'),
 			'password_confirm' => array('Password', 'trim|required|matches[password]')
 		));
-	}	
+	}
 
 }

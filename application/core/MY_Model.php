@@ -21,13 +21,7 @@ class MY_Model extends CI_Model {
 	 * primary key field of table
 	 * @var string
 	 */
-	protected $_pkey = null;
-
-	/**
-	 * data retrieved from submit form
-	 * @var array
-	 */
-	private $_post = array();
+	protected $_pkey = null;	
 
 	/**
 	 * when update/insert data, make sure all data would be
@@ -182,14 +176,22 @@ class MY_Model extends CI_Model {
 	 */
 	protected function post_data($clean = TRUE)
 	{
+		$this->before_post();
+
 		if ( count($_POST) ) {
 			foreach ($_POST as $key => $val) {
-				$this->_post[$key] = $this->input->post($key, $clean);
+				$_POST[$key] = $this->input->post($key, $clean);
 			}
 		}
 
+		$this->after_post();
+
 		return $this;
 	}
+
+	public function before_post() {}
+	
+	public function after_post() {}
 
 	public function before_save() {}
 
@@ -238,7 +240,7 @@ class MY_Model extends CI_Model {
 	{
 		$fields = $this->db->list_fields($this->_table);
 
-        foreach ($this->_post as $key => $val) {            
+        foreach ($_POST as $key => $val) {            
             if ($this->_match_field) {
                 if ( in_array($key, $fields) ) {
                 	// if found primary key, skip that

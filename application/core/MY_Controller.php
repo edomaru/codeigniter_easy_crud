@@ -212,7 +212,7 @@ class MY_Controller extends CI_Controller {
     }
 
     protected function search_handler($keywords = "none")
-    {        
+    {
         if (count($_POST)) {
             $input_name = $this->config->item("default_search_keyword_input_name");
             $keywords = $this->input->post($input_name);
