@@ -48,14 +48,14 @@ class MY_Controller extends CI_Controller {
      * it can be redirect to independent container by createing view/<class name>/container.php
      * @var string
      */
-    protected $the_container = "includes/container";
+    protected $content = "includes/container";
 
     /**
      * view content
      * by default, it would be used <current_class>/<method_name>.php 
      * @var string
      */
-    protected $the_content = "";
+    protected $current_content = "";
 
     /**
      * widget to be used
@@ -93,9 +93,9 @@ class MY_Controller extends CI_Controller {
         // set default container
         $class_container = $this->class_name . "/container.php";
         if (file_exists(FCPATH . APPPATH . $class_container)) {
-            $this->the_container = $class_container;            
+            $this->content = $class_container;            
         }
-        $this->data->the_container = $this->the_container;
+        $this->data->content = $this->content;
 
         // default widget for index
         // check if any widget.php defined in view/<class name>/widget.php
@@ -124,15 +124,15 @@ class MY_Controller extends CI_Controller {
      */
     protected function set_content($content = null)
     {
-        $this->the_content = $this->class_name;
+        $this->current_content = $this->class_name;
         if (! $content) {
-            $this->the_content .= "/" . $this->router->method;
+            $this->current_content .= "/" . $this->router->method;
         }
         else {
-            $this->the_content .= "/" . $content;
+            $this->current_content .= "/" . $content;
         }
 
-        $this->data->the_content = $this->the_content;  
+        $this->data->current_content = $this->current_content;          
     }
 
     /**

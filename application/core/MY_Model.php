@@ -339,6 +339,9 @@ class MY_Model extends CI_Model {
 
 	public function validations($key = array(), $rules = array())
 	{
+		// validation just for update and save method only
+		if (! in_array($this->router->method, array('save', 'update'))) return;
+
 		// jika array
 		if (is_array($key) && count($key) > 0) {
 			foreach ($key as $field => $values) {

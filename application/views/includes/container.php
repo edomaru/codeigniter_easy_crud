@@ -18,7 +18,7 @@
         
         <?php if (isset($the_widget)) $this->view($the_widget) ?>
         
-        <?php $this->view($the_content) ?>
+        <?php $this->view($current_content) ?>
 
     </div>
 
